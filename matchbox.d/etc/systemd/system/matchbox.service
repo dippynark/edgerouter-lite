@@ -1,0 +1,18 @@
+[Unit]
+Description=CoreOS matchbox
+Documentation=https://github.com/coreos/matchbox
+
+[Service]
+User=matchbox
+Group=matchbox
+Environment="MATCHBOX_ADDRESS=0.0.0.0:8080"
+Environment="MATCHBOX_RPC_ADDRESS=0.0.0.0:8081"
+ExecStart=/usr/bin/matchbox
+Restart=on-failure
+RestartSec=5
+# systemd.exec
+ProtectHome=yes
+ProtectSystem=full
+
+[Install]
+WantedBy=multi-user.target
