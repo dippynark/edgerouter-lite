@@ -1,5 +1,5 @@
 [Unit]
-Description=Ensure Hashicorp Vault is initialised
+Description=Ensure Hashicorp Vault init
 
 [Timer]
 OnBootSec=3600
