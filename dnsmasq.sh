@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 # Link PXE config
 ln -sf /config/scripts/post-config.d/dnsmasq.d/dnsmasq-pxe-config.conf /etc/dnsmasq.d/dnsmasq-pxe-config.conf
 
