@@ -7,11 +7,6 @@ This repository contains my modifications to the [EdgeRouter Lite][1]:
 
 ## Prerequisites
 
-In order to use `matchbox`, you first need to generate the CA and serving key
-pairs and place them in `matchbox.d/etc/matchbox`. To do this you can use the
-[cert-gen][8] script in the `matchbox` repository. Read
-[matchbox.d/etc/matchbox/README.md][9] for more details.
-
 Ensure root SSH access to the EdgeRouter Lite assumed to be at
 ubnt.lukeaddison.co.uk:
 ```sh
