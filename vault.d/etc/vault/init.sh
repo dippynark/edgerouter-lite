@@ -4,8 +4,6 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-set -x 
-
 VAULT_CONFIG_DIR=/etc/vault
 export VAULT_ADDR=http://127.0.0.1:8200
 
