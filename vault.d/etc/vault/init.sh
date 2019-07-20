@@ -27,17 +27,6 @@ while true; do
     sleep 1
 done
 
-# wait for unseal key
-while true; do
-    if [ -f "${VAULT_CONFIG_DIR}/unseal-key" ]; then
-        echo "unseal key found "
-        break
-    fi
-    echo "waiting for unseal key: ${VAULT_CONFIG_DIR}/unseal-key"
-    sleep 1
-done
-export VAULT_UNSEAL_KEY=$(cat "${VAULT_CONFIG_DIR}/unseal-key")
-
 # unseal
 while true; do
     VAULT_STATUS_CODE=$(curl -k -o /dev/null -w "%{http_code}" "${VAULT_ADDR}/v1/sys/health" || true)
@@ -46,8 +35,7 @@ while true; do
         break
     elif [ "${VAULT_STATUS_CODE}" == "503" ]; then
         echo "waiting for unsealing"
-
-        VAULT_UNSEAL_RESPONSE=$(curl -X PUT --data "{\"key\": \"${VAULT_UNSEAL_KEY}\"}" "${VAULT_ADDR}/v1/sys/unseal")
+        sleep 1
         continue
     fi
 
