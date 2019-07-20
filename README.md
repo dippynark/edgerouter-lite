@@ -12,7 +12,7 @@ pairs and place them in `matchbox.d/etc/matchbox`. To do this you can use the
 [cert-gen][8] script in the `matchbox` repository. Read
 [matchbox.d/etc/matchbox/README.md][9] for more details.
 
-You also need to ensure root SSH access to the EdgeRouter Lite assumed to be at
+Ensure root SSH access to the EdgeRouter Lite assumed to be at
 ubnt.lukeaddison.co.uk:
 ```sh
 # configure ubnt authorized_keys
@@ -20,6 +20,8 @@ configure
 loadkey ubnt id_rsa.pub
 exit
 ```
+
+Compile vault for linux/mips64 and move to `vault.d/vault`. Instructions can be found [here](vault.d/README.md).
 
 ## Installation
 
