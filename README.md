@@ -1,9 +1,9 @@
 # edgerouter-lite
 
-This repository contains my modifications to the [EdgeRouter Lite][1]. The main
-changes are to use [dnsmasq][2] for DHCP and a SysV init script for
-[matchbox][3]. This allows me to PXE boot machines in my domain and integrate
-with my [kube-matchbox-tf][4] project.
+This repository contains my modifications to the [EdgeRouter Lite][1]:
+- [dnsmasq][2] for DHCP
+- [matchbox][3] for CoreOS PXE boot
+- [Vault][10] for PKI
 
 ## Prerequisites
 
@@ -51,3 +51,4 @@ If you want to use a cached copy of Container Linux for PXE booting using
   [7]: ./matchbox.d/assets/README.md
   [8]: https://github.com/coreos/matchbox/blob/master/scripts/tls/cert-gen
   [9]: ./matchbox.d/etc/matchbox/README.md
+  [10]: https://www.vaultproject.io/
