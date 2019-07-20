@@ -1,0 +1,32 @@
+# https://github.com/jsok/puppet-vault/blob/master/templates/vault.systemd.erb
+
+[Unit]
+Description=Hashicorp Vault
+Documentation=https://www.vaultproject.io/
+Wants=vyatta-router.service
+After=network.target vyatta-router.service
+
+[Service]
+User=vault
+Group=vault
+PrivateDevices=yes
+PrivateTmp=yes
+ProtectSystem=full
+ProtectHome=read-only
+CapabilityBoundingSet=CAP_SYSLOG
+NoNewPrivileges=yes
+ExecStart=/etc/vault/wrapper.sh
+KillSignal=SIGINT
+TimeoutStopSec=30s
+Restart=on-failure
+StartLimitInterval=60s
+StartLimitBurst=3
+#AmbientCapabilities=CAP_IPC_LOCK
+ExecReload=/bin/kill --signal HUP $MAINPID
+KillMode=process
+RestartSec=5
+TimeoutStopSec=30
+LimitNOFILE=65536
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,9 @@
+[Unit]
+Description=Ensure Hashicorp Vault is initialised
+
+[Timer]
+OnBootSec=3600
+OnUnitActiveSec=3600
+
+[Install]
+WantedBy=timers.target
