@@ -10,4 +10,4 @@ ln -sf /config/scripts/post-config.d/dnsmasq.d/dnsmasq-pxe-config.conf /etc/dnsm
 ln -snf /config/scripts/post-config.d/dnsmasq.d/tftpboot /var/lib/tftpboot
 
 # Restart dnsmasq service
-service dnsmasq restart
+systemctl restart dnsmasq
