@@ -12,12 +12,28 @@ pairs and place them in `matchbox.d/etc/matchbox`. To do this you can use the
 [cert-gen][8] script in the `matchbox` repository. Read
 [matchbox.d/etc/matchbox/README.md][9] for more details.
 
-## Installation 
+You also need to ensure root SSH access to the EdgeRouter Lite assumed to be at
+ubnt.lukeaddison.co.uk:
+```sh
+# configure ubnt authorized_keys
+configure
+loadkey ubnt id_rsa.pub
+exit
+```
+
+## Installation
 
 To install this repository into your EdgeRouter Lite, place the contents of the
 repository into the `/config/scripts/post-config.d` directory and run the
 scripts in the root directory. Doing this also protects against any changes
-introduced by upgrading EdgeOS. 
+introduced by upgrading EdgeOS.
+
+```
+rsync -qza --delete --exclude=.git . root@ubnt.lukeaddison.co.uk:/config/scripts/post-config.d/
+ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/dnsmasq.sh
+ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/matchbox.sh
+ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/vault.sh
+```
 
 If you want to use a cached copy of Container Linux for PXE booting using
 `matchbox`, you will need to download a copy of [Container Linux][5] using the
