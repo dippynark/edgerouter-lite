@@ -37,7 +37,7 @@ If you want to use a cached copy of Container Linux for PXE booting using
 `matchbox`, you will need to download a copy of [Container Linux][5] using the
 [get-coreos][6] script and place it in the `/var/lib/matchbox/assets` directory.
 The directory structure should look something like
-`matchbox.d/assets/coreos/1520.8.0/...`.
+`/var/lib/matchbox/assets/coreos/1520.8.0/...`.
 
   [1]: https://www.ubnt.com/edgemax/edgerouter-lite/
   [2]: http://www.thekelleys.org.uk/dnsmasq/doc.html
