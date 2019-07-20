@@ -74,6 +74,7 @@ if [ ! -f "${VAULT_CONFIG_DIR}/server.crt" ] || [ ! -f "${VAULT_CONFIG_DIR}/serv
     RESTART="true"
 fi
 VAULT_RESPONSE=$(/usr/bin/vault write pki/vault/issue/server common_name=vault alt_names=vault.lukeaddison.co.uk -format=json)
+umask 0077
 echo ${VAULT_RESPONSE} | jq -r .data.private_key > "${VAULT_CONFIG_DIR}/server.key"
 echo ${VAULT_RESPONSE} | jq -r .data.certificate > "${VAULT_CONFIG_DIR}/server.crt"
 echo ${VAULT_RESPONSE} | jq -r .data.issuing_ca > "${VAULT_CONFIG_DIR}/ca.crt"
