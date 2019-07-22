@@ -43,16 +43,20 @@ while true; do
     sleep 1    
 done
 
-# wait for root token
+# wait for vault server issue token
 while true; do
-    if [ -f "${VAULT_CONFIG_DIR}/root-token" ]; then
-        echo "root token found "
+    if [ -f "${VAULT_CONFIG_DIR}/vault-server-issue-token" ]; then
+        echo "vault server issue token found "
         break
     fi
-    echo "waiting for root token: ${VAULT_CONFIG_DIR}/root-token"
+    echo "waiting for vault server issue token: ${VAULT_CONFIG_DIR}/vault-server-issue-token"
     sleep 1
 done
-export VAULT_TOKEN=$(cat "${VAULT_CONFIG_DIR}/root-token")
+export VAULT_TOKEN=$(cat "${VAULT_CONFIG_DIR}/vault-server-issue-token")
+
+# renew vault server issue token
+vault token renew > /dev/null
+echo "vault server issue token renewed"
 
 # generate server certificate
 RESTART="false"
