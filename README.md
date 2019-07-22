@@ -31,6 +31,14 @@ rsync -qza --delete --exclude=.git . root@ubnt.lukeaddison.co.uk:/config/scripts
 ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/dnsmasq.sh
 ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/matchbox.sh
 ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/vault.sh
+
+ssh root@ubnt.lukeaddison.co.uk
+
+vault token create -role=vault -format=json | jq -r .auth.client_token > /etc/vault/vault-server-issue-token
+chmod 0600 /etc/vault/vault-server-issue-token
+
+vault token create -role=matchbox -format=json | jq -r .auth.client_token > /etc/vault/matchbox-server-issue-token
+chmod 0600 /etc/vault/matchbox-server-issue-token
 ```
 
 If you want to use a cached copy of Container Linux for PXE booting using
