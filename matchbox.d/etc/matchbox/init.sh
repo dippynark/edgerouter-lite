@@ -8,16 +8,20 @@ MATCHBOX_CONFIG_DIR=/etc/matchbox
 VAULT_CONFIG_DIR=/etc/vault
 export VAULT_ADDR=http://127.0.0.1:8200
 
-# wait for root token
+# wait for matchbox server issue token
 while true; do
-    if [ -f "${VAULT_CONFIG_DIR}/root-token" ]; then
-        echo "root token found "
+    if [ -f "${VAULT_CONFIG_DIR}/matchbox-server-issue-token" ]; then
+        echo "matchbox server issue token found"
         break
     fi
-    echo "waiting for root token: ${VAULT_CONFIG_DIR}/root-token"
+    echo "waiting for matchbox server issue token: ${VAULT_CONFIG_DIR}/matchbox-server-issue-token"
     sleep 1
 done
-export VAULT_TOKEN=$(cat "${VAULT_CONFIG_DIR}/root-token")
+export VAULT_TOKEN=$(cat "${VAULT_CONFIG_DIR}/matchbox-server-issue-token")
+
+# renew matchbox server issue token
+vault token renew > /dev/null
+echo "matchbox server issue token renewed"
 
 # generate server certificate
 VAULT_RESPONSE=$(/usr/bin/vault write pki/matchbox/issue/server common_name=matchbox alt_names=matchbox.lukeaddison.co.uk -format=json)
