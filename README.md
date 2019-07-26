@@ -4,6 +4,7 @@ This repository contains my modifications to the [EdgeRouter Lite][1]:
 - [dnsmasq][2] for DHCP
 - [matchbox][3] for CoreOS PXE boot
 - [Vault][10] for PKI
+- [Consul][11] for Terraform state
 
 ## Prerequisites
 
@@ -16,8 +17,11 @@ loadkey ubnt id_rsa.pub
 exit
 ```
 
-Compile vault for linux/mips64 and move to `vault.d/vault`. Instructions can be
+Compile Vault for linux/mips64 and move to `vault.d/vault`. Instructions can be
 found [here](vault.d/README.md).
+
+Compile Consul for linux/mips64 and move to `consul.d/consul`. Instructions can
+be found [here](consul.d/README.md).
 
 ## Installation
 
@@ -61,3 +65,4 @@ The directory structure should look something like
   [8]: https://github.com/coreos/matchbox/blob/master/scripts/tls/cert-gen
   [9]: ./matchbox.d/etc/matchbox/README.md
   [10]: https://www.vaultproject.io/
+  [11]: https://www.consul.io/
