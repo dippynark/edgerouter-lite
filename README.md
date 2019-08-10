@@ -5,6 +5,7 @@ This repository contains my modifications to the [EdgeRouter Lite][1]:
 - [matchbox][3] for CoreOS PXE boot
 - [Vault][10] for PKI
 - [Consul][11] for Terraform state
+- [node-exporter][12] for metrics
 
 ## Prerequisites
 
@@ -75,3 +76,4 @@ The directory structure should look something like
   [9]: ./matchbox.d/etc/matchbox/README.md
   [10]: https://www.vaultproject.io/
   [11]: https://www.consul.io/
+  [12]: https://github.com/prometheus/node_exporter
