@@ -31,10 +31,19 @@ scripts in the root directory. Doing this also protects against any changes
 introduced by upgrading EdgeOS.
 
 ```
-rsync -qza --delete --exclude=.git . root@ubnt.lukeaddison.co.uk:/config/scripts/post-config.d/
+rsync -qza --include="dnsmasq**" --exclude="*" . root@ubnt.lukeaddison.co.uk:/config/scripts/post-config.d/
 ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/dnsmasq.sh
+
+rsync -qza --include="node-exporter**" --exclude="*" . root@ubnt.lukeaddison.co.uk:/config/scripts/post-config.d/
+ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/node-exporter.sh
+
+rsync -qza --include="matchbox**" --exclude="*" . root@ubnt.lukeaddison.co.uk:/config/scripts/post-config.d/
 ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/matchbox.sh
+
+rsync -qza --include="vault**" --exclude="*" . root@ubnt.lukeaddison.co.uk:/config/scripts/post-config.d/
 ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/vault.sh
+
+rsync -qza --include="consul**" --exclude="*" . root@ubnt.lukeaddison.co.uk:/config/scripts/post-config.d/
 ssh root@ubnt.lukeaddison.co.uk sh /config/scripts/post-config.d/consul.sh
 
 ssh root@ubnt.lukeaddison.co.uk

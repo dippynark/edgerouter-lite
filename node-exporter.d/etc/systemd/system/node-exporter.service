@@ -1,0 +1,9 @@
+[Unit]
+Description=NodeExporter
+
+[Service]
+TimeoutStartSec=0
+ExecStart=/usr/bin/node-exporter/node_exporter --collector.systemd --web.listen-address=192.168.1.1:9100
+
+[Install]
+WantedBy=multi-user.target
