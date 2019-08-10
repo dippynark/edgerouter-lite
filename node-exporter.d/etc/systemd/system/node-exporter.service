@@ -3,6 +3,7 @@ Description=NodeExporter
 
 [Service]
 TimeoutStartSec=0
+# https://github.com/prometheus/node_exporter/blob/master/collector/systemd_linux.go#L232
 ExecStart=/usr/bin/node-exporter/node_exporter --collector.systemd --collector.systemd.enable-restarts-metrics --web.listen-address=192.168.1.1:9100
 
 [Install]
