@@ -1,9 +1,0 @@
-[Unit]
-Description=Ensure Hashicorp Vault init
-
-[Timer]
-OnBootSec=86400
-OnUnitActiveSec=86400
-
-[Install]
-WantedBy=timers.target
